@@ -8,3 +8,5 @@ dll
 
 .npm
 stats.json
+dist-ssr
+*.local

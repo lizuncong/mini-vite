@@ -1,0 +1,31 @@
+{
+  "name": "mini-vite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vue": "^3.0.4"
+  },
+  "devDependencies": {
+    "vite": "^1.0.0-rc.13",
+    "@vue/compiler-sfc": "^3.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizuncong/mini-vite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lizuncong/mini-vite/issues"
+  },
+  "homepage": "https://github.com/lizuncong/mini-vite#readme"
+}
