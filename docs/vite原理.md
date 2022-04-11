@@ -5,3 +5,11 @@ vite是一个基于Vue3单文件组件的非打包开发服务器，它做到了
 
 ### vite的实现原理
 vite在浏览器端使用export import的方式导入和导出模块，同时实现了按需加载，vite高度依赖module script特性
+
+过程如下：
+- 服务端拦截客户端请求，拿到请求body
+- 通过 es-module-lexer 解析资源 ast 拿到import的内容
+- 判断 import 的资源是否是 npm 模块
+- 返回处理后的资源路径： "vue" => "/@modules/vue"
+
+将处理后的template，script，style等所需的依赖以http请求的形式，通过query参数形式区分并加载sfc文件各个模块内容
