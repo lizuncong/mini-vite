@@ -3,6 +3,11 @@ vite是一个基于Vue3单文件组件的非打包开发服务器，它做到了
 
 面向现代浏览器，基于原生模块系统 ESModule 实现。webpack的开发环境很慢(开发时需要进行编译存到内存中)
 
+
+关键变化是 `index.html` 中的入口文件导入方式
+```html
+<script type="module" src="/src/main.js"></script>
+```
 ### vite的实现原理
 vite在浏览器端使用export import的方式导入和导出模块，同时实现了按需加载，vite高度依赖module script特性
 
