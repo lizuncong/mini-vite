@@ -8,16 +8,16 @@ import { getCurrentInstance, ref, computed } from 'vue'
 // 获取组件实例
 const ins = getCurrentInstance()
 
-function useI18n(){
+function useI18n() {
   const locale = ref('zh')
   const i18n = ins.type.i18n
-  const t = msg => {
+  const t = (msg) => {
     return computed(() => i18n[locale.value][msg]).value
   }
 
   return {
     locale,
-    t
+    t,
   }
 }
 const { locale, t } = useI18n()
@@ -27,14 +27,13 @@ const { locale, t } = useI18n()
   <img alt="Vue logo" src="./assets/logo.png" />
   <Product />
   <HelloWorld msg="Hello Vue 3 + Vite" />
-  <label>{{ t("language") }}</label>
-  <label>{{ t("hello") }}</label>
+  <label>{{ t('language') }}</label>
+  <label>{{ t('hello') }}</label>
   <select v-model="locale">
     <option value="en">en</option>
     <option value="zh">zh</option>
   </select>
 </template>
-
 
 <i18n>
 {
@@ -48,7 +47,6 @@ const { locale, t } = useI18n()
   }
 }
 </i18n>
-
 
 <style>
 #app {
