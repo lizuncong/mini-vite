@@ -1,0 +1,10 @@
+@import url('@style/reset.css');
+:root {
+    --main-bg-color: blue;
+}
+
+.root {
+    @console.error hello root;
+    color: red;
+    background-color: var(--main-bg-color);
+}

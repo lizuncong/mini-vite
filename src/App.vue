@@ -2,6 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from '@/components/HelloWorld.vue'
+import Product from '@/components/Product.jsx'
 import { getCurrentInstance, ref, computed } from 'vue'
 
 // 获取组件实例
@@ -24,6 +25,7 @@ const { locale, t } = useI18n()
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
+  <Product />
   <HelloWorld msg="Hello Vue 3 + Vite" />
   <label>{{ t("language") }}</label>
   <label>{{ t("hello") }}</label>
