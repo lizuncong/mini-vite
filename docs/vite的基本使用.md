@@ -43,3 +43,52 @@ Object.entries(globModules).forEach(([k, v]) => {
 
 - 将 `CommonJs` 等非 `ESM` 模块转换成 `ESM`
 - bundle files together。将一些零散的文件打包到一起。比如 `lodash-es` 这种库，基本每个函数都写在一个文件里面，如果不使用预编译将所有模块打包成一个文件，就会造成浏览器太多的请求。
+
+### 非 Node 服务中集成 vite
+
+如果是使用 `java` 或者 `python` 等模版引擎生成的页面，如何集成 `vite`
+
+这里使用 `express` 以及 `pug` 模拟其他语言
+
+新家 server.js：
+
+```javascript
+const express = require('express')
+
+const app = express()
+
+app.set('view engine', 'pug')
+
+app.get('/', (req, res) => {
+  res.render('index', {
+    title: 'Hey',
+    message: 'Hello There!',
+  })
+})
+app.listen(4000)
+```
+
+新建 views/index.pug 文件
+
+```pug
+html
+    head
+        title=title
+    body
+        h1=message
+        div(id="app")
+        script(src="http://localhost:3000/@vite/client" type="module")
+        script(src="http://localhost:3000/src/main.js" type="module")
+```
+
+`http://localhost:3000` 是本地客户端的端口
+
+如果是生成环境，则在客户端的 `vite.config.js` 中配置
+
+```json
+"build": {
+    "manifest": true, // 非nodejs服务中集成vite
+}
+```
+
+此时构建出来的产物会有一个 `manifest.json` 文件，可以在服务端根据这个文件插入到后端生成的模版中

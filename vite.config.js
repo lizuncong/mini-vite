@@ -18,4 +18,7 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['vue'],
   },
+  build: {
+    manifest: true, // 非nodejs服务中集成vite
+  },
 })
