@@ -34,3 +34,12 @@ Object.entries(globModules).forEach(([k, v]) => {
   })
 })
 ```
+
+### vite 预编译
+
+对于在 `node_modules` 中安装的第三方依赖，`vite` 在第一次启动时会将这些包进行编译放到缓存中 `node_modules/.vite`。之后请求都是走缓存的内容
+
+预编译的目标：
+
+- 将 `CommonJs` 等非 `ESM` 模块转换成 `ESM`
+- bundle files together。将一些零散的文件打包到一起。比如 `lodash-es` 这种库，基本每个函数都写在一个文件里面，如果不使用预编译将所有模块打包成一个文件，就会造成浏览器太多的请求。
