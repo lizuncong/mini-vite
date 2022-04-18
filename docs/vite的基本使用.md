@@ -94,3 +94,29 @@ html
 此时构建出来的产物会有一个 `manifest.json` 文件，可以在服务端根据这个文件插入到后端生成的模版中
 
 ### Nodejs 集成 vite 开发时的 SSR
+
+```js
+const express = require('express')
+const fs = require('fs')
+
+const app = express()
+
+const { createServer: createViteServer } = require('vite')
+
+createViteServer({
+  server: {
+    middlewareMode: 'ssr',
+  },
+}).then((vite) => {
+  app.use(vite.middlewares)
+  app.get('*', async (req, res) => {
+    const template = fs.readFileSync('index.html', 'utf-8')
+    const { render } = await vite.ssrLoadModule('/src/server-entry.jsx')
+    const html = await render()
+    const resHtml = template.replace('<!--APP_HTML-->', html)
+    res.set('content-type', 'text/html')
+    res.send(resHtml)
+  })
+  app.listen(4000)
+})
+```
