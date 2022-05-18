@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import vm from 'virtual-module'
 import { mike } from './test.ts'
+import './style/test.scss'
 
 const globModules = import.meta.glob('./glob/*')
 

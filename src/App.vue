@@ -24,15 +24,7 @@ const { locale, t } = useI18n()
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <Product />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
-  <label>{{ t('language') }}</label>
-  <label>{{ t('hello') }}</label>
-  <select v-model="locale">
-    <option value="en">en</option>
-    <option value="zh">zh</option>
-  </select>
+  test
 </template>
 
 <i18n>
